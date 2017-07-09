@@ -14,7 +14,7 @@ public class Test1 {
 	private By sign_in_button=By.xpath("//*[@id='SubmitLogin']/span");
 	@Test
 	public void init(){
-		System.out.println(sign_in_button.toString());
+	System.out.println(sign_in_button.toString());
 	System.setProperty("webdriver.chrome.driver","C:\\Users\\LENOVO\\Sid2\\chromedriver.exe");
 	WebDriver driver= new ChromeDriver();
 	driver.get("http://automationpractice.com/index.php");
