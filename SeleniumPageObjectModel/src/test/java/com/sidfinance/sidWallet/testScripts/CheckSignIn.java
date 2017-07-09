@@ -48,7 +48,7 @@ public class CheckSignIn {
 		ca.Enter_FirstName("Siddhesh");
 		ca.Enter_LastName("Jadhav");
 		ca.Enter_Password("sid123");
-		ca.Select_Day("6");
+		ca.Select_Day(6);
 		ca.Select_Month("June");
 		ca.Select_Year("1994");
 	}

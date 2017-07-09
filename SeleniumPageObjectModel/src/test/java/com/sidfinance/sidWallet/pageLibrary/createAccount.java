@@ -10,13 +10,16 @@ public class createAccount {
 	WebDriver driver;
 	private By Title1_radioButton=By.xpath("//*[@id='id_gender1']");
 	private By Title2_radioButton=By.xpath("//*[@id='id_gender2']");
+	
 	private By FirstName=By.xpath("//*[@id='customer_firstname']");
 	private By LastName=By.xpath("//*[@id='customer_lastname']");
 	private By Email=By.xpath("//*[@id='email']");
 	private By Password=By.xpath("//*[@id='passwd']");
+	
 	private By DOB_Day_DropDown=By.xpath("//*[@id='days']");
 	private By DOB_Month_DropDown=By.xpath("//*[@id='months']");
 	private By DOB_Year_DropDown=By.xpath("//*[@id='years']");
+	
 	private By SignUpForNewsLettet_CheckBox=By.xpath("//*[@id='newsletter']");
 	private By ReceiveSpecialOffer_CheckBox=By.xpath("//*[@id='optin']");
 	
@@ -58,46 +61,70 @@ public class createAccount {
 	public void Enter_Password(String Password){
 		driver.findElement(this.Password).sendKeys(Password);
 	}
-	public void Select_Day(String Day) throws InterruptedException{
+	public void Select_Day(int Day) throws InterruptedException{
+		Day++;
 		driver.findElement(this.DOB_Day_DropDown).click();
 		Thread.sleep(1000);
 		String day="//*[@id='days']/option["+Day+"]";
 		driver.findElement(By.xpath(day)).click();
 	}
-	public void Select_Month(String Month) throws InterruptedException{
+	public void Select_Month(String month) throws InterruptedException{
 		driver.findElement(DOB_Month_DropDown).click();
 		Thread.sleep(1000);
 		//*[@id='months']/option[4]
-		String month="//*[@id='months']/option";
-		List<WebElement> allMonths=driver.findElements(By.xpath(month));
+		String monthElements="//*[@id='months']/option";
+		List<WebElement> allMonths=driver.findElements(By.xpath(monthElements));
 		for(WebElement element: allMonths){
-			if(element.getText().trim()==month){
+			System.out.println(element.getText().trim());
+			String comp=element.getText().trim();
+			if(comp.compareTo(month)==0){
 				element.click();
 			}
 		}
 	}
-	public void Select_Year(String Year) throws InterruptedException{
+	public void Select_Year(String year) throws InterruptedException{
 		driver.findElement(this.DOB_Year_DropDown).click();
 		Thread.sleep(1000);
-		String year="//*[@id='years']/option";
-		List<WebElement> allYears=driver.findElements(By.xpath(year));
+		String yearElements="//*[@id='years']/option";
+		List<WebElement> allYears=driver.findElements(By.xpath(yearElements));
 		for(WebElement element: allYears){
-			if(element.getText().trim()==year){
+			System.out.println(element.getText().trim());
+			if(element.getText().trim().compareTo(year)==0){
 				element.click();
 			}
 		}
 	}
+	public void Enter_Company(String companyName){
+		driver.findElement(Company).sendKeys(companyName);
+	}
+	
+	public void Enter_Address(String address1, String address2){
+		driver.findElement(Address1).sendKeys(address1);
+	}
+	
+	public void Enter_City(String city){
+		driver.findElement(City).sendKeys(city);
+	}
+	
+	public void Select_State(String state){
+		driver.findElement(State).click();
+		String stateElements="//*[@id='id_state']/option";
+		List<WebElement> states=driver.findElements(By.xpath(stateElements));
+		for(WebElement get: states){
+			if(get.getText().trim().compareTo(state)==0){
+				get.click();
+			}
+		}
+	}
+	
 	public void ClickOnRegisterLink(){
 		driver.findElement(RegisterLink).click();
 	}
 	
 	public void CheckTheCheckBox(){
 		driver.findElement(ReceiveSpecialOffer_CheckBox).click();
+		driver.findElement(SignUpForNewsLettet_CheckBox).click();
 	}
-	public void SelectFromDropDown(){
-		driver.findElement(DOB_Day_DropDown);
-	}
-	
 	
 	
 }
