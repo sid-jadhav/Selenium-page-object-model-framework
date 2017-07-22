@@ -22,21 +22,22 @@ public class CheckSignIn {
 		driver.get("http://automationpractice.com/index.php");
 		driver.manage().window().maximize();
 	}
-	//@After
-	public void tearDown(){
+	@After
+	public void tearDown() throws InterruptedException{
 		//log.info("Closing the browser");
+		Thread.sleep(5000);
 		driver.close();
 	}
 	
-	//@Test
+	@Test
 	public void CheckSignInFunctionality(){
 		//log.info("Checking the SignIn Page");
 		signIn si=new signIn(driver);
-		si.Enter_AlreadyRegistered_EmailAddress("sidisking@gmail.com");
-		si.Enter_AlreadyRegistered_Password("Shetta");
+		si.Enter_AlreadyRegistered_EmailAddress("SiddheshJadhav@gmail.com");
+		si.Enter_AlreadyRegistered_Password("sid123");
 		si.ClickOnSignIn();
 	}
-	@Test
+	//@Test
 	public void CheckCreateAccountPage() throws InterruptedException
 	{
 		signIn si=new signIn(driver);
@@ -51,5 +52,13 @@ public class CheckSignIn {
 		ca.Select_Day(6);
 		ca.Select_Month("June");
 		ca.Select_Year("1994");
+		ca.Enter_Address("Street 1", "Street 2");
+		ca.Enter_City("Kolhapur");
+		ca.Select_State("Iowa");
+		ca.Enter_ZipCode("41605");
+		ca.Select_Country("United States");
+		ca.Enter_MobileNo("9834290591");
+		ca.Enter_AddressAlise("jadhavwadi");
+		ca.ClickOnRegisterLink();
 	}
 }

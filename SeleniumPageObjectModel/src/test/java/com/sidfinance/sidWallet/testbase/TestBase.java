@@ -23,10 +23,10 @@ public class TestBase {
 	public String getProperties(String Name) throws IOException{
 		return(properties.getProperty(Name));
 	}
-	@Test
-	public void print() throws IOException{
-		LoadProperties();
-		System.out.println(getProperties(env));
-		
-	}
+//	@Test
+//	public void print() throws IOException{
+//		LoadProperties();
+//		System.out.println(getProperties(env));
+//		
+//	}
 }

@@ -75,7 +75,6 @@ public class createAccount {
 		String monthElements="//*[@id='months']/option";
 		List<WebElement> allMonths=driver.findElements(By.xpath(monthElements));
 		for(WebElement element: allMonths){
-			System.out.println(element.getText().trim());
 			String comp=element.getText().trim();
 			if(comp.compareTo(month)==0){
 				element.click();
@@ -88,7 +87,6 @@ public class createAccount {
 		String yearElements="//*[@id='years']/option";
 		List<WebElement> allYears=driver.findElements(By.xpath(yearElements));
 		for(WebElement element: allYears){
-			System.out.println(element.getText().trim());
 			if(element.getText().trim().compareTo(year)==0){
 				element.click();
 			}
@@ -111,10 +109,33 @@ public class createAccount {
 		String stateElements="//*[@id='id_state']/option";
 		List<WebElement> states=driver.findElements(By.xpath(stateElements));
 		for(WebElement get: states){
+			System.out.println(get.getText().trim());
 			if(get.getText().trim().compareTo(state)==0){
 				get.click();
 			}
 		}
+	}
+	public void Enter_ZipCode(String zip){
+		driver.findElement(PinCode).sendKeys(zip);
+	}
+	
+	public void Select_Country(String country){
+		driver.findElement(Country_DropDown).click();
+		String cXpath="//*[@id='id_country']/option";
+		List<WebElement> count=driver.findElements(By.xpath(cXpath));
+		for(WebElement get:count){
+			System.out.println(get.getText().trim());
+			if(get.getText().trim().equals(country)){
+				get.click();
+			}
+		}
+	}
+	
+	public void Enter_MobileNo(String mobile){
+		driver.findElement(MobilePhone).sendKeys(mobile);
+	}
+	public void Enter_AddressAlise(String address){
+		driver.findElement(AddressAlise).sendKeys(address);
 	}
 	
 	public void ClickOnRegisterLink(){
